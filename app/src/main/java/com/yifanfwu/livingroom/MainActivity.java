@@ -30,47 +30,6 @@ public class MainActivity extends Activity {
                 startActivity(intent);
             }
         });
-
-//        Firebase.setAndroidContext(this);
-//        final Firebase ref = new Firebase("https://livingroom.firebaseio.com/");
-//
-//        final EditText taskName = (EditText) findViewById(R.id.task_name);
-//
-//        Button taskButton = (Button) findViewById(R.id.task_button);
-//        taskButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                ref.child("tasks").push().setValue(taskName.getText().toString());
-//                taskName.setText("");
-//            }
-//        });
-//
-//        ref.child("tasks").addChildEventListener(new ChildEventListener() {
-//            @Override
-//            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-//                Toast.makeText(getApplicationContext(), "Child added", Toast.LENGTH_SHORT).show();
-//            }
-//
-//            @Override
-//            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-//
-//            }
-//
-//            @Override
-//            public void onChildRemoved(DataSnapshot dataSnapshot) {
-//                Toast.makeText(getApplicationContext(), "Child removed", Toast.LENGTH_SHORT).show();
-//            }
-//
-//            @Override
-//            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(FirebaseError firebaseError) {
-//
-//            }
-//        });
     }
 
 

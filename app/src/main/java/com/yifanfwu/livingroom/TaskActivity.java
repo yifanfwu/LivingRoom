@@ -2,19 +2,28 @@ package com.yifanfwu.livingroom;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
+import com.firebase.client.Query;
+
+import java.util.ArrayList;
 
 public class TaskActivity extends Activity {
+
+    private static final String TAG = "TaskActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,10 +44,18 @@ public class TaskActivity extends Activity {
             }
         });
 
+        final ArrayList<String> stringList = new ArrayList<>();
+
+        final ArrayAdapter<String> listAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, stringList);
+        ListView taskList = (ListView) findViewById(R.id.task_list);
+        taskList.setAdapter(listAdapter);
+
         ref.child("tasks").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Toast.makeText(getApplicationContext(), "Child added", Toast.LENGTH_SHORT).show();
+                String task = (String) dataSnapshot.getValue();
+                stringList.add(task);
+                listAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -48,7 +65,9 @@ public class TaskActivity extends Activity {
 
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
-                Toast.makeText(getApplicationContext(), "Child removed", Toast.LENGTH_SHORT).show();
+                String task = (String) dataSnapshot.getValue();
+                stringList.remove(task);
+                listAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -59,6 +78,15 @@ public class TaskActivity extends Activity {
             @Override
             public void onCancelled(FirebaseError firebaseError) {
 
+            }
+        });
+
+        taskList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //need to delete from database
+                stringList.remove(position);
+                listAdapter.notifyDataSetChanged();
             }
         });
     }

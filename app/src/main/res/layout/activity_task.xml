@@ -6,15 +6,24 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".MainActivity">
+    tools:context="com.yifanfwu.livingroom.TaskActivity">
 
     <Button
-        android:id="@+id/task_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Add Task"
+        android:id="@+id/add_task_button"
+        android:layout_marginBottom="40dp"
         android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:id="@+id/task_edittext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/add_task_button"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="80dp"
-        android:text="Your Tasks" />
+        android:layout_marginBottom="24dp"
+        android:hint="Enter your task name" />
 
 </RelativeLayout>

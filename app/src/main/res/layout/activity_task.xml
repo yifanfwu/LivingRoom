@@ -2,31 +2,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.yifanfwu.livingroom.TaskActivity">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add Task"
-        android:id="@+id/add_task_button"
-        android:layout_marginBottom="40dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+    <!--<Button-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Add Task"-->
+        <!--android:id="@+id/add_task_button"-->
+        <!--android:layout_marginBottom="40dp"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_centerHorizontal="true" />-->
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"
+        />
 
-    <EditText
-        android:id="@+id/task_edittext"
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/add_task_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/add_task_button"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="24dp"
-        android:hint="Enter your task name" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="16dp"
+        app:fabSize="normal"
+        app:borderWidth="0dp"
+        app:backgroundTint="@color/colorAccent"
+        />
+
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="320dp"
         android:id="@+id/task_list"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/toolbar"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

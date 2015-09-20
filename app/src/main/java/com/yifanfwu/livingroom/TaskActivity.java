@@ -39,6 +39,7 @@ public class TaskActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Firebase.setAndroidContext(this);
         final Firebase ref = new Firebase("https://livingroom.firebaseio.com/");
@@ -142,12 +143,12 @@ public class TaskActivity extends AppCompatActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+//        int id = item.getItemId();
+//
+//        //noinspection SimplifiableIfStatement
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -163,12 +164,12 @@ public class TaskActivity extends AppCompatActivity {
         final EditText editText = (EditText) promptView.findViewById(R.id.edit_text);
         // setup a dialog window
         alertDialogBuilder.setCancelable(false)
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                .setPositiveButton("Add", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         ref.child("tasks").push().setValue(editText.getText().toString());
                     }
                 })
-                .setNegativeButton("Cancel",
+                .setNegativeButton("Discard",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 dialog.cancel();
